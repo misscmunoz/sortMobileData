@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation - Controller</title>
+
+    <link rel="stylesheet" type="text/css" href="../documentation.css">
+</head>
+<body>
+    <div class="file" id="#controller">
+        The <i>Controller.php</i> constructs the
+        <p>
+            <span class="snippet">
+            <b>public $model; </b> gets the value from the <i>model</i> that's being passed when the object is instantiated.
+            </span>
+        </p>
+
+        <hr>
+
+        <div class="functions" id="#getListValues">
+            <h3>getListValues function</h3>
+            The main function that is being used is the <b>getListValues</b> function.
+            <p>
+                <h4>How to call this function: </h4>
+                <span class="snippet"> $this->getListValues($rowKey); || $this->getListValues(null,array("make","model"));</span>
+
+            </p>
+            <p>
+                <h4>Parameters:</h4>
+            <span class="snippet"> (int)<b>$rowKey</b> || (array)<b>$columnKey</b></span>
+            </p>
+
+            <h5>sample params for $columnKey: <span class="snippet"> array("make","model")</span> </h5>
+
+            <h4>What functions are being called, depending on the parameter: </h4>
+            <p>
+                <span class="snippet"> $this->findColumn($row, $columnKey);</span>, if <b>$columnKey</b> is passed.
+            </p>
+
+            <p>
+                <span class="snippet"> this->addRow($rowKey, $this->model->data[$row]); </span>, if <b>$rowKey</b> is passed.
+            </p>
+
+            <p> Note: It loops through the data, <span class="snippet">$this->model->data</span>. </p>
+        </div>
+
+        <h4>Other functions that are being used inside the function: </h4>
+
+        <div class="functions" id ="#findColumn">
+            <h3>findColumn function </h3>
+            <p>Retrieves data that are the same column.  that matches the <b>$columnKey</b> parameter. This function also uses <b>getField</b> function.</p>
+            <h4>How to call this function: </h4>
+            <p>
+                <span class="snippet"> $this->findColumn($row, $columnKey);</span>
+            </p>
+
+            <h4>Parameters: </h4>
+            <span class="snippet"> (int)<b>$row</b> && (array)<b>$columnKey</b></span>
+            <p><b>$row</b> index of the outer array -- index of the array that holds the array that has the row information. </p>
+            <p><b>$columnKey</b> the array index for the "column". Used to determine which column to retrieve. </p>
+
+            <p>This function uses the <b>getField</b> and <b>addColumn</b> function.</p>
+        </div>
+
+        <div class="functions" id="#getField">
+            <h3>getField function</h3>
+            <p>Returns the numerical equivalent of the parameter that was passed.</p>
+            <h4>How to use function: </h4>
+                <span class="snippet"> $this->getField($columnKey[$column])</span>
+
+            <h4>Parameters</h4>
+            <span class="snippet"> (int)<b>$field</b></span>
+
+        </div>
+
+        <div class="function" id="#addColumn">
+            <h3>addColumn function</h3>
+            <p>"Column" information is stored in <span class="snippet">$this->model->columns</span></p>
+            <h4>How to use this function: </h4>
+            <span class="snippet"> $this->addColumn($row,$key, $columnValue);</span>
+            <h4>Parameters</h4>
+            <span class="snippet"> (int)<b>$row</b> && (int)<b>$key</b> && (array)<b>$columnValue</b></span>
+            <p><b>$row</b> is the outer array index, the "row number", to be used to retrieve information about a "row". </p>
+            <p><b>$key</b> is the array key of the column. It is used to determine what column it is. </p>
+            <p><b>$columnValue</b> is the column information. </p>
+
+        </div>
+
+        <div class="functions" id="#addRow">
+            <h3>addRow function</h3>
+             Stores "rows" into  <span class="snippet">$this->model->rows</span>.
+            <h4>How to call this function: </h4>
+            <span class="snippet"> $this->addRow($rowKey, $this->model->data[$row]);</span>
+            <h4>Parameters:</h4>
+            <span class="snippet"> (int)<b>$row</b> && (array)<b>$row</b></span>
+            <p><b>$row</b> is the array index</p>
+            <p><b>$row</b> are the row information</p>
+        </div>
+
+        <div class="functions" id="#jsFunctions">
+            <h2>Functions called by AJAX</h2>
+            <h5>These class are called by the <i>ajaxHandler.php</i></h5>
+
+            <h3>getSortValues</h3>
+            <p>Retrieves data after sorting.</p>
+            <h4>How to use this function: </h4>
+            <p><span class="snippet"> $this->getSortValues($sortID)</span></p>
+            <h4>Parameter</h4>
+            <p><span class="snippet"> (int)<b>$sortID</b></span></p>
+            <p><b>$sortID</b> to get the <b>$column</b> and <b>$sort</b> values that will be used in the <b>sortColumns</b> function.</p>
+
+
+            <h3>sortColumns</h3>
+            <p>Retrieves sorted data </p>
+            <h4>How to use this function: </h4>
+            <span class="snippet"> $this->sortColumns(array($column,"make","model"), $sort); </span>
+            <h4>Parameters:</h4>
+            <span class="snippet"> (array)<b>$columns</b> && (int)<b>$sortBy</b></span>
+
+            <p><b>$columns</b> are columns that are required. </p>
+            <p><b>$sortBy</b> will determine which of sort is going to be used. </p>
+
+            <p>Note: <i>Case 1</i> is a special case, because we don't want the label - first element of the array, to be sorted as it ends up in the bottom. </p>
+
+
+            <h3>findRowJS</h3>
+            <p>Gets called after the onclick event to retrieve more information about the model.
+            <h4>How to use this function: </h4>
+            <span class="snippet"> $this->findRowJS($rowKey)</span>
+            <h4>Parameters: </h4>
+            <span class="snippet"> (int)<b>$rowKey</b></span>
+            <p>After the row information has been retrieved, it searches for the "label" row and combines both array that has label and the row that was retrieved. </p>
+
+            <p><span class="snippet">$this->getListValues(0); </span></p>
+            <p><span class="snippet">$this->model->rows = array_combine($this->model->rows[0],$this->model->rows[$rowKey]); </span></p>
+            <p>The results then get appended using JavaScript. </p>
+
+
+            <p><b>getFormattedColumns</b> is also being used. Check <i>View.php</i> functions to see more. </p>
+        </div>
+    </div>
+    <div>
+        Also see:
+        <a href="model.html">Model</a>
+        <a href="view.html">View</a>
+        or
+        <a href="../documentation.html">Home</a>
+    </div>
+
+</body>
+</html>

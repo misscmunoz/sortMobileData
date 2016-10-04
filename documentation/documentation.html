@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="documentation.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#tableOfContents").load("tableOfContents.html");
+        });
+    </script>
+</head>
+<body>
+    <h1>Documentation</h1>
+    <div id="tableOfContents"></div>
+
+
+    <h2>How to use the website </h2>
+    <p>Go to the <i>localhost/essence/index.php</i> in the URL bar of a web browser and wait for the page to load. </p>
+    <p>There will be two columns displayed, the "make" and the "model" of mobile phones. </p>
+    <p> If the dropDown is used to sort, the relevant column will appear, to make it easier to compare. </p>
+
+    <h2>Technical introduction </h2>
+
+    <p>The architecture follows an MVC concept.</p>
+    <p><i>Model.php</i> turns the CSV file into an array that is used by the <i>Controller.php</i></p>
+    <p><i>Controller.php</i> has all of the functions that manipulates the data. </p>
+    <p><i>View.php</i> handles how the output would look like. </p>
+    <p><i>autoload.php</i> loads all of the relevant files and initiates the model,view and controller. </p>
+    <p><i>index.php and ajaxHandler.php </i> uses the <i>autoload.php </i>file.</p>
+    <p>ajaxHandler deals with the AJAX requests from the Javascript </p>
+    <p> index file has the <i>view.php</i> output. </p>
+
+    <p>
+        <span class="snippet">
+            <b>echo $view->output();</b>
+        </span> inside a <i>table tag</i>.
+    </p>
+
+    <h3>assets folder contents </h3>
+    <p><i>csv</i> folder has the csv file that is used in the <i>model.php</i></p>
+    <p><i>images</i> folder has the images used in the website -- specifically, the loader, at this time. </p>
+    <p><i>test.css and test.js</i> files that are used for styling and scripting. </p>
+
+    <p>Note: </p>
+    <p>
+        Some of the words in this documentation are highlighted.
+    </p>
+    <p>Pink is for <span class="snippet">Code snippets</span> and purple is or <b>variables or function names</b>.</p>
+    <h3>How the data was imagined</h3>
+    <div>
+
+        The <b>array_map</b> in the <i>model.php</i> handles the csv and converts it into an array.
+        <p>This array specifically, <span class="snippet">$this->model->data </span> contains a number of arrays in it. </p>
+        <p>In this documentation, you'll see the word <b>$key</b> and $column mentioned a great deal.</p>
+    <h4>The "row" or $row explanation</h4>
+        <p>The row is simply the indexes of the array <span class="snippet">$this->model->data </span> </p>
+        <p> It is used to determine which line/array that has the information needed for a specific "model".</p>
+
+        <h4>The "column" or $column explanation</h4>
+        <p>Inside each <b>$row</b> array, there are multiple arrays. For each item in the array, there is a key and value. For example, In the first index would always be for the  "phone code". So when
+        we want to get the "phone code", the <b>$column</b> that is needed is [0].
+        </p>
+        <img src="data.png">
+
+    </div>
+</body>
+</html>

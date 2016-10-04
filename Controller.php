@@ -137,7 +137,6 @@ class Controller
                 {
                     if ($rowKey == $row)
                     {
-                        //row, if you pass in row, should just have 1 number
                         $this->addRow($rowKey, $this->model->data[$row]);
                     }
                 }
@@ -222,5 +221,4 @@ class Controller
 
         $this->sortColumns(array($column,"make","model"), $sort);
     }
-
 }

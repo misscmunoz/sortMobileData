@@ -28,7 +28,7 @@ class View
      */
     public function getFormattedColumns($columnItem, $return = false)
     {
-        //Loop through columns
+        //Handles the outer array
         foreach ($columnItem as $column => $items)
         {
             //Add the table row
@@ -51,6 +51,7 @@ class View
      */
     public function formatColumn($key, $items)
     {
+        //Handles the inner array
         foreach($items as $itemKey => $item)
         {
             //If it's a header, then put in table header <th> tag

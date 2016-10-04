@@ -1,0 +1,36 @@
+body {
+    width:70%;
+    margin-left:15%;
+    margin-right:15%;
+    padding-top: 50px;
+}
+h3 {
+    color: #0099ff;
+}
+
+b {
+    color: #7733ff;
+}
+
+p {
+    color: #272727;
+}
+
+img {
+    height: 40% ;
+    width: 40% ;
+}
+
+.snippet, b {
+    font-family: monospace;
+}
+
+.snippet {
+    color: #ff33cc;
+
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+

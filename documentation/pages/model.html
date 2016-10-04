@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documentation - Model </title>
+
+    <link rel="stylesheet" type="text/css" href="../documentation.css">
+</head>
+<body>
+    <div class ="file" id="#model">The <i>model.php</i> constructs the variables:
+                <span class="snippet">
+                <b>public $data; </b> variable where the csv data and access this if we want the values.
+                </span>
+                <span class="snippet">
+                <b>public $labelList; </b> variable where all of the column label is stored.
+                </span>
+
+                <span class="snippet">
+                <b>public $sortOptions; </b> variable where the options for the sort <b>dropDown</b> is stored.
+                </span>
+    </div>
+
+    <p>To get the <b>$data</b>, <span class="snippet">array_map</span> is used. It uses the <b>str_getcsv</b> function as a callback and handles the processing of the csv file.</p>
+    <div>
+        Also see:
+        <a href="view.html">View</a>
+        <a href="controller.html">Controller</a>
+        or
+        <a href="../documentation.html">Home</a>
+    </div>
+
+</body>
+</html>
